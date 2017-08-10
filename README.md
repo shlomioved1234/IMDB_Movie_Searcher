@@ -1,5 +1,5 @@
 IMDB-Movie_Searcher
--------------------
+=========
 
 A IMDB MOVIE SEARCHER web application written in Python and Flask
 
@@ -16,6 +16,9 @@ If you are using any other version of Python older than 3.4, then you need to do
 On Linux you likely have a package for your distribution. For example, if you use Ubuntu:
 
 `$ sudo apt-get install python-virtualenv`
+
+To install modules on the virtual envirovment you must use the python installed within the virtual environemnt:
+`$ flask/bin/pip install <module_name>`
 
 Running
 --------
