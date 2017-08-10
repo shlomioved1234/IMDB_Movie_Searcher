@@ -1,0 +1,14 @@
+<!-- extend from base layout -->
+<!-- Search Page with search bar -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Search</h1>
+<form action="" method="POST" name="search">
+    {{ form.hidden_tag() }}
+    <p>
+    Please enter your Movie Title:<br>
+    <input type="text" name="search" placeholder="Enter Movie Name..">
+    <p><input type="submit" value="Submit"></p>
+        </form>
+{% endblock %}

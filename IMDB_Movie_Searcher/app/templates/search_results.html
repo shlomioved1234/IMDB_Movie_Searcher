@@ -1,0 +1,23 @@
+<!-- extend from base layout -->
+<!-- Prints movie data in a table -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Results</h1>
+<html>
+    <body>
+        
+        <table border = 1>
+            {% for key, value in results %}
+            
+            <tr>
+                <th> {{ key }} </th>
+                <td> {{ value }} </td>
+            </tr>
+            
+            {% endfor %}
+        </table>
+        
+    </body>
+</html>
+{% endblock %}
