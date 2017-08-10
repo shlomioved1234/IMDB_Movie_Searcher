@@ -27,3 +27,7 @@ To run the application in the development web server just execute run.py with th
 Requirements
 ------------
 See file requirements.txt
+
+Demo
+-----
+See `Flask App Demonstration_reduced.mov` for demonstration on how to run the app
