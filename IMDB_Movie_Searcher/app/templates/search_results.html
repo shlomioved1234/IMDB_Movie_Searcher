@@ -3,21 +3,36 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style media="screen" type="text/css">
+    
+    img {
+        max-width: 100%;
+        height: auto;
+        width: auto\9; /* ie8 */
+    }
+
+    </style>
 <h1>Results</h1>
 <html>
     <body>
-        
-        <table border = 1>
-            {% for key, value in results %}
+        <img src={{image}}  alt="Picture">
+            <br>
+            <br>
+            <table border = 1>
+                {% for key, value in results %}
+                
+                <tr>
+                    <th> {{ key }} </th>
+                    <td> {{ value }} </td>
+                </tr>
+                
+                {% endfor %}
+            </table>
+            <br>
+            <br>
             
-            <tr>
-                <th> {{ key }} </th>
-                <td> {{ value }} </td>
-            </tr>
             
-            {% endfor %}
-        </table>
-        
-    </body>
+            
+            </body>
 </html>
 {% endblock %}
