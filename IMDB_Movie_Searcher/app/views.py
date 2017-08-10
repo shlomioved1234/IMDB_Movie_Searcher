@@ -102,6 +102,24 @@ def getMovie(movie):
         pass
     return OrderedDict(d)
 
+#Function that gets the URL RAW
+def getURLRaw(input):
+    try:
+        if input[0] == 't' and input[1] == 't':
+            html = getHTML('http://www.imdb.com/title/'+input+'/')
+            htmlR = 'http://www.imdb.com/title/'+input+'/'
+        
+        else:
+            html = getHTML('https://www.google.co.in/search?q='+input)
+            for cite in html.findAll('cite'):
+                if 'imdb.com/title/tt' in cite.text:
+                    html = getHTML('http://'+cite.text)
+                    htmlR = 'http://'+cite.text
+                    break
+        return htmlR
+    except Exception as e:
+        return 'Invalid input or Network Error!'
+
 #Gets URL with Query in it
 def url_for(string, query):
     return '/'+string+ '/'+ str(query)
