@@ -8,8 +8,6 @@ import requests
 import json
 import codecs
 
-
-
 #Function that gets data from IMDB
 def getJSON(html):
     data = {}
@@ -58,7 +56,7 @@ def getURL(input):
     try:
         if input[0] == 't' and input[1] == 't':
             html = getHTML('http://www.imdb.com/title/'+input+'/')
-                
+        
         else:
             html = getHTML('https://www.google.co.in/search?q='+input)
             for cite in html.findAll('cite'):
@@ -69,7 +67,6 @@ def getURL(input):
     except Exception as e:
         return 'Invalid input or Network Error!'
 
-
 #Function that gets movie data
 def getMovie(movie):
     #Gets Data of the Movie
@@ -78,6 +75,7 @@ def getMovie(movie):
     d = {}
     try:
         d['Link']=getURLRaw(movie)
+        #d['Image Link']=parsed['poster']
         d['Title']=parsed['title']
         d['Rating']= parsed['rating']
         d['Certification']= parsed['rated']
@@ -124,6 +122,14 @@ def getURLRaw(input):
 def url_for(string, query):
     return '/'+string+ '/'+ str(query)
 
+#Gets link for image
+def getImageLink(movie):
+    link= getURLRaw(movie)
+    response = requests.get(link)
+    html = BeautifulSoup(response.content,'html.parser', from_encoding="utf-8")
+    image = html.find(itemprop='image')['src']
+    return image
+
 #Routes Index Page
 @app.route('/')
 @app.route('/index')
@@ -148,7 +154,8 @@ def search():
 def search_results(query):
     results = getMovie(query)
     results = iter(results.items())
-    return render_template("search_results.html",query=query,results=results)
+    image = getImageLink(query)
+    return render_template("search_results.html",query=query,results=results, image=image)
 
 #Routes About Page
 @app.route('/about')
