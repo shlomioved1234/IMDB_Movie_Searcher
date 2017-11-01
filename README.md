@@ -5,7 +5,7 @@ A IMDB MOVIE SEARCHER web application written in Python and Flask
 
 Installation
 ------------
-If you are using Python 3, then cd into the microblog folder and then create a virtual environment with the following command:
+If you are using Python 3, then cd into the app folder and then create a virtual environment with the following command:
 
 `$ python -m venv flask`
 
